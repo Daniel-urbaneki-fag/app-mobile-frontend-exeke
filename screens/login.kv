@@ -1,0 +1,101 @@
+<Login>
+    canvas.before:
+        Color:
+            rgba: (43/255, 55/255, 63/255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    GridLayout:
+        rows: 3
+        cols: 1
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: 1.5
+            padding: 40
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x: 0.5
+                size_hint_y: 0.3
+                pos_hint: {'center_x': 0.5}
+                canvas.before:
+                    Color:
+                        rgba: (255/255, 251/255, 214/255, 1)
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Image:
+                    source: 'src/images/logo.png'
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 30
+            size_hint_y: 2
+            BoxRounded:
+                orientation: 'vertical'
+                size_hint_x: 0.9
+                size_hint_y: 0.3
+                pos_hint: {'center_x': 0.5}
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_x: 0.9
+                    size_hint_y: 0.3
+                    pos_hint: {'center_x': 0.5}
+                    padding: 20
+                    Label:
+                        canvas:
+                            Color:
+                                rgb: 1, 0, 0, 1
+                        text: 'Login'
+                        text_size: (self.width, None)
+                        font_size: '16sp'
+                        halign: 'left'
+
+                    TextInput:
+                        id: usuario
+                        font_size : '16sp'
+                        multiline : False
+                    
+                    Label:
+                        canvas:
+                            Color:
+                                rgb: 1, 0, 0
+                        text: 'Senha'
+                        text_size: (self.width, None)
+                        font_size: '16sp'
+                        halign: 'left'
+
+                    TextInput:
+                        id: senha
+                        password: True
+                        multiline : False
+                    
+                    Button:
+                        text: 'Esqueceu senha ?'
+                        background_color: 0, 0, 0, 0
+                        text_size: (self.width, None)
+                        font_size: '10sp'
+                        halign: 'right'
+
+                    RoundedButton:
+                        text: 'Logar'
+                        on_press: root.login()
+        BoxLayout:
+            orientation: 'vertical'
+<RoundedButton@Button>
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: (242/255, 106/255, 53/255, 1)
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [7]
+
+<BoxRounded@BoxLayout>
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: (196/255, 196/255, 196/255, 0.28)
+        Rectangle:
+            pos: self.pos
+            size: self.size
