@@ -20,7 +20,7 @@ class Login(ScrollView):
         Window.softinput_mode = "below_target"
     
     def login(self,):
-        api = "http://192.168.0.11:8000/login"
+        api = "http://127.0.0.1:5000/login"
         if self.ids["usuario"].text == "" or self.ids["senha"].text == "":
             box = BoxLayout(orientation="vertical")
             msg = Label(text="Email/senha vazios!")
@@ -35,14 +35,14 @@ class Login(ScrollView):
             "senha" : self.ids["senha"].text
         }
 
-        # response = requests.post(url=api, data=data)
-        # response = json.loads(response.content.decode())
-        # box = BoxLayout(orientation="vertical")
-        # msg = Label(text=response["msg"])
-        # box.add_widget(msg)
-        # pop = Popup(title="", content=box, size_hint=(None, None), separator_height=0, background="",
-        #     size=(300, 60), pos_hint={"top": 0.97}, background_color=response["color_msg"])
-        # pop.open()
+        response = requests.post(url=api, data=data)
+        response = json.loads(response.content.decode())
+        box = BoxLayout(orientation="vertical")
+        msg = Label(text=response["msg"])
+        box.add_widget(msg)
+        pop = Popup(title="", content=box, size_hint=(None, None), separator_height=0, background="",
+            size=(300, 60), pos_hint={"top": 0.97}, background_color=response["color_msg"])
+        pop.open()
     
 class ExekeApp(App):
     def build(self):
